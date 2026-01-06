@@ -19,7 +19,7 @@ const Contact: React.FC = () => {
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  
+
   const { showToast } = useToast();
 
   const validateField = (name: string, value: string): string | undefined => {
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
+
     // Real-time validation
     const error = validateField(name, value);
     setErrors(prev => ({ ...prev, [name]: error }));
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
 
     setIsSubmitting(true);
     const success = await submitContactForm(formData);
-    
+
     if (success) {
       setIsSuccess(true);
       setFormData({ name: '', email: '', message: '' });
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
         <meta name="description" content="Get in touch with Anurup R Krishnan." />
       </Helmet>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="py-12 max-w-4xl mx-auto"
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
             Get In <span className="text-neo-yellow stroke-black">Touch</span>
           </h1>
           <p className="text-xl font-bold">
-            Have a project in mind? Let's build something awesome together.
+            Have a project in mind? Let's make something cool.
           </p>
         </div>
 
@@ -108,10 +108,9 @@ const Contact: React.FC = () => {
             <Card color="blue" className="h-full flex flex-col justify-center" tilt>
               <h3 className="text-3xl font-black uppercase mb-6 text-white">Let's talk!</h3>
               <p className="text-lg font-bold mb-8">
-                I'm currently available for internships, freelance work, or full-time opportunities.
-                If you have a question or just want to say hi, I'll try my best to get back to you!
+                I'm open to internships and freelance work. If you have a question or just want to say hi, feel free to reach out!
               </p>
-              
+
               <div className="space-y-4 font-bold text-lg">
                 <div className="bg-white p-4 border-4 border-neo-black shadow-neo-sm break-all">
                   anuruprkrishnan@gmail.com
@@ -141,22 +140,22 @@ const Contact: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="bg-white border-4 border-neo-black p-8 shadow-neo">
                 <motion.div animate={errors.name ? { x: [-10, 10, -10, 10, 0] } : {}}>
-                  <Input 
-                    label="Name" 
-                    name="name" 
-                    placeholder="Your Name" 
+                  <Input
+                    label="Name"
+                    name="name"
+                    placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
                     error={errors.name}
                   />
                 </motion.div>
-                
+
                 <motion.div animate={errors.email ? { x: [-10, 10, -10, 10, 0] } : {}}>
-                  <Input 
-                    label="Email" 
-                    name="email" 
+                  <Input
+                    label="Email"
+                    name="email"
                     type="email"
-                    placeholder="your@email.com" 
+                    placeholder="your@email.com"
                     value={formData.email}
                     onChange={handleChange}
                     error={errors.email}
@@ -164,9 +163,9 @@ const Contact: React.FC = () => {
                 </motion.div>
 
                 <motion.div animate={errors.message ? { x: [-10, 10, -10, 10, 0] } : {}}>
-                  <TextArea 
-                    label="Message" 
-                    name="message" 
+                  <TextArea
+                    label="Message"
+                    name="message"
                     placeholder="Tell me about your project..."
                     value={formData.message}
                     onChange={handleChange}
@@ -174,9 +173,9 @@ const Contact: React.FC = () => {
                   />
                 </motion.div>
 
-                <Button 
-                  type="submit" 
-                  variant="primary" 
+                <Button
+                  type="submit"
+                  variant="primary"
                   className="w-full flex justify-center items-center"
                   disabled={isSubmitting}
                 >

@@ -6,8 +6,7 @@ import { Project, Skill, ContactMessage } from '../types';
 const MOCK_PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'Notivo
-    s AI',
+    title: 'Notivos AI',
     description: 'A cross-platform desktop productivity suite integrating Google Gemini API for real-time text summarization and semantic search.',
     longDescription: 'Built a cross-platform desktop application integrating Google Gemini API for real-time text summarization, semantic search, and AI-powered note enhancement. Architected a secure IPC bridge in Electron to ensure safe data transfer. Implemented local SQLite caching layer to enable robust offline functionality.',
     imageUrl: 'https://picsum.photos/800/600?random=1',
