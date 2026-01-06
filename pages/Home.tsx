@@ -9,7 +9,7 @@ import { GlitchText } from '../components/ui/GlitchText';
 
 const Home: React.FC = () => {
   const [text, setText] = useState('');
-  const fullText = "Making Cool Things";
+  const fullText = "Engineering Scalable Solutions";
 
   useEffect(() => {
     let index = 0;
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     <>
       <Helmet>
         <title>Home | Anurup R Krishnan</title>
-        <meta name="description" content="Portfolio of Anurup R Krishnan - Computer Science Student" />
+        <meta name="description" content="Portfolio of Anurup R Krishnan - Full Stack Engineer" />
       </Helmet>
 
       {/* Decorative Floating Shapes */}
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           className="w-full md:w-1/2"
         >
           <span className="inline-block px-4 py-2 bg-neo-green dark:bg-neo-amoled-surface border-2 border-neo-black dark:border-neo-amoled-border font-bold uppercase mb-6 shadow-neo-sm dark:shadow-neo-sm-amoled dark:text-neo-amoled-text">
-            CS Student & Developer
+            Full Stack Engineer
           </span>
 
           <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black uppercase leading-tight mb-8 dark:text-neo-amoled-text w-full text-center md:text-left">
@@ -66,8 +66,7 @@ const Home: React.FC = () => {
           </h1>
 
           <p className="text-xl md:text-2xl font-medium max-w-2xl mb-10 leading-relaxed border-l-8 border-neo-pink pl-6 dark:text-neo-amoled-muted">
-            Computer Science undergraduate at Amrita University.
-            I like building backend systems, cloud stuff, and working with AI.
+            Specializing in distributed systems, high-performance cloud infrastructure, and AI-powered applications.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start w-full">

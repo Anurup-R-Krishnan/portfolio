@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
             Get In <span className="text-neo-yellow stroke-black">Touch</span>
           </h1>
           <p className="text-xl font-bold">
-            Have a project in mind? Let's make something cool.
+            Have a project in mind? Let's Build Something Exceptional.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ const Contact: React.FC = () => {
             <Card color="blue" className="h-full flex flex-col justify-center" tilt>
               <h3 className="text-3xl font-black uppercase mb-6 text-white">Let's talk!</h3>
               <p className="text-lg font-bold mb-8">
-                I'm open to internships and freelance work. If you have a question or just want to say hi, feel free to reach out!
+                I'm open to full-time opportunities and complex engineering challenges. If you have a question or just want to say hi, feel free to reach out!
               </p>
 
               <div className="space-y-4 font-bold text-lg">

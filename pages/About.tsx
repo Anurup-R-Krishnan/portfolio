@@ -51,10 +51,10 @@ const About: React.FC = () => {
 
   const finalCode = `const developer = {
   name: "Anurup",
-  role: "Student",
-  focus: ["Web", "AI"],
+  role: "Full Stack Engineer",
+  focus: ["Cloud", "GenAI"],
   coffee: true,
-  status: "Building things"
+  status: "Building scale"
 };`;
 
   useEffect(() => {
