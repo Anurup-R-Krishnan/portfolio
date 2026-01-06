@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Anurup R Krishnan | Developer Portfolio</title>
+
+        <!-- Google Fonts: Space Grotesk -->
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Theme Persistence Script -->
+        <script>
+            (function () {
+                try {
+                    const theme = localStorage.getItem("theme");
+                    if (theme === "dark") {
+                        document.documentElement.classList.add(
+                            "dark",
+                        );
+                    }
+                } catch (e) {}
+            })();
+        </script>
+
+        <!-- Tailwind Config for Neobrutalist Theme -->
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: [
+                                '"Space Grotesk"',
+                                "sans-serif",
+                            ],
+                        },
+                        colors: {
+                            neo: {
+                                yellow: "#FFDE59",
+                                pink: "#FF99C8",
+                                blue: "#5CE1E6",
+                                green: "#7ED957",
+                                orange: "#FF914D",
+                                black: "#121212",
+                                white: "#FFFFFF",
+                                // New AMOLED Theme Colors (Low Contrast for Eye Comfort)
+                                amoled: {
+                                    bg: "#000000",
+                                    surface: "#080808",
+                                    surfaceLight: "#0f0f0f",
+                                    border: "#1a1a1a",
+                                    text: "#e4e4e7",
+                                    muted: "#71717a",
+                                    accent: "#3f3f46",
+                                },
+                            },
+                        },
+                        boxShadow: {
+                            neo: "5px 5px 0px 0px #000000",
+                            "neo-amoled":
+                                "5px 5px 0px 0px #1a1a1a",
+                            "neo-sm": "3px 3px 0px 0px #000000",
+                            "neo-sm-amoled":
+                                "3px 3px 0px 0px #1a1a1a",
+                            "neo-lg": "8px 8px 0px 0px #000000",
+                            "neo-lg-amoled":
+                                "8px 8px 0px 0px #1a1a1a",
+                        },
+                        animation: {
+                            marquee:
+                                "marquee 25s linear infinite",
+                        },
+                        keyframes: {
+                            marquee: {
+                                "0%": {
+                                    transform: "translateX(0%)",
+                                },
+                                "100%": {
+                                    transform:
+                                        "translateX(-100%)",
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                background-color: #f0f0f0;
+                overflow-x: hidden;
+                background-image: radial-gradient(
+                    #121212 1px,
+                    transparent 1px
+                );
+                background-size: 24px 24px;
+                transition:
+                    background-color 0.5s
+                        cubic-bezier(0.4, 0, 0.2, 1),
+                    color 0.5s ease;
+            }
+
+            /* AMOLED Dark Mode Styling */
+            .dark body {
+                background-color: #000000;
+                background-image: radial-gradient(
+                    #1a1a1a 1px,
+                    transparent 1px
+                );
+                color: #a1a1aa;
+            }
+
+            .dark .bg-white {
+                background-color: #080808 !important;
+                color: #e4e4e7;
+            }
+
+            .dark .text-neo-black {
+                color: #e4e4e7 !important;
+            }
+
+            .dark .border-neo-black {
+                border-color: #1a1a1a !important;
+            }
+
+            .dark .shadow-neo {
+                box-shadow: 5px 5px 0px 0px #1a1a1a !important;
+            }
+
+            .dark .shadow-neo-sm {
+                box-shadow: 3px 3px 0px 0px #1a1a1a !important;
+            }
+
+            .dark .shadow-neo-lg {
+                box-shadow: 8px 8px 0px 0px #1a1a1a !important;
+            }
+
+            .dark .hover\:shadow-none:hover {
+                box-shadow: 0 0 0 0 transparent !important;
+            }
+
+            /* Softened/Muted Accent Colors for Dark Mode - Removed Yellow Highlighting */
+            .dark .bg-neo-yellow {
+                background-color: #0f0f0f !important;
+                color: #a1a1aa !important;
+            }
+            .dark .bg-neo-blue {
+                background-color: #0e4e50 !important;
+                color: #67e8f9 !important;
+            }
+            .dark .bg-neo-pink {
+                background-color: #701a3d !important;
+                color: #fda4af !important;
+            }
+            .dark .bg-neo-green {
+                background-color: #14532d !important;
+                color: #86efac !important;
+            }
+
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 12px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #ffffff;
+                border-left: 3px solid black;
+            }
+            .dark ::-webkit-scrollbar-track {
+                background: #000000;
+                border-left: 3px solid #1a1a1a;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #000000;
+            }
+            .dark ::-webkit-scrollbar-thumb {
+                background: #27272a;
+                border: 3px solid #000000;
+                border-radius: 6px;
+            }
+
+            @media (pointer: fine) {
+                body {
+                    cursor: none;
+                }
+                a,
+                button,
+                input,
+                textarea,
+                select {
+                    cursor: none;
+                }
+            }
+        </style>
+        <script type="importmap">
+            {
+                "imports": {
+                    "react": "https://esm.sh/react@18.3.1",
+                    "react/": "https://esm.sh/react@18.3.1/",
+                    "react-dom": "https://esm.sh/react-dom@18.3.1",
+                    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+                    "react-router-dom": "https://esm.sh/react-router-dom@6.28.0?external=react,react-dom",
+                    "lucide-react": "https://esm.sh/lucide-react@0.460.0?external=react,react-dom",
+                    "framer-motion": "https://esm.sh/framer-motion@10.17.9?external=react,react-dom",
+                    "firebase/": "https://esm.sh/firebase@10.13.2/",
+                    "react-helmet-async": "https://esm.sh/react-helmet-async@2.0.4?external=react,react-dom",
+                    "@emailjs/browser": "https://esm.sh/@emailjs/browser@4.4.1",
+                    "react-dom/": "https://esm.sh/react-dom@18.3.1/"
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="/index.css" />
+    </head>
+    <body
+        class="selection:bg-neo-pink selection:text-black dark:selection:bg-neo-blue dark:selection:text-black"
+    >
+        <div id="root"></div>
+        <script type="module" src="/index.tsx"></script>
+    </body>
+</html>
