@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-    html, body {
+
+    html,
+    body {
         overflow-x: hidden;
         max-width: 100vw;
     }
-    
+
     body {
         background-color: #f0f0f0;
         background-image: radial-gradient(#121212 1px, transparent 1px);
@@ -33,19 +35,19 @@
     }
 
     .dark .border-neo-black {
-        border-color: #1a1a1a !important;
+        border-color: #ffffff !important;
     }
 
     .dark .shadow-neo {
-        box-shadow: 5px 5px 0px 0px #1a1a1a !important;
+        box-shadow: 5px 5px 0px 0px #ffffff !important;
     }
 
     .dark .shadow-neo-sm {
-        box-shadow: 3px 3px 0px 0px #1a1a1a !important;
+        box-shadow: 3px 3px 0px 0px #ffffff !important;
     }
 
     .dark .shadow-neo-lg {
-        box-shadow: 8px 8px 0px 0px #1a1a1a !important;
+        box-shadow: 8px 8px 0px 0px #ffffff !important;
     }
 
     .dark .hover\:shadow-none:hover {
@@ -56,14 +58,17 @@
         background-color: #0f0f0f !important;
         color: #a1a1aa !important;
     }
+
     .dark .bg-neo-blue {
         background-color: #0e4e50 !important;
         color: #67e8f9 !important;
     }
+
     .dark .bg-neo-pink {
         background-color: #701a3d !important;
         color: #fda4af !important;
     }
+
     .dark .bg-neo-green {
         background-color: #14532d !important;
         color: #86efac !important;
@@ -74,17 +79,21 @@
 ::-webkit-scrollbar {
     width: 12px;
 }
+
 ::-webkit-scrollbar-track {
     background: #ffffff;
     border-left: 3px solid black;
 }
+
 .dark ::-webkit-scrollbar-track {
     background: #000000;
     border-left: 3px solid #1a1a1a;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #000000;
 }
+
 .dark ::-webkit-scrollbar-thumb {
     background: #27272a;
     border: 3px solid #000000;
@@ -95,7 +104,12 @@
     body {
         cursor: none;
     }
-    a, button, input, textarea, select {
+
+    a,
+    button,
+    input,
+    textarea,
+    select {
         cursor: none;
     }
 }
