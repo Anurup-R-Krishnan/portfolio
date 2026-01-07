@@ -1,20 +1,19 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Search, 
-  Home, 
-  User, 
-  Briefcase, 
-  Mail, 
-  FileText, 
+import {
+  Search,
+  Home,
+  User,
+  Briefcase,
+  Mail,
+  FileText,
   Copy,
   ExternalLink,
   Moon,
   Command,
   ArrowRight
 } from 'lucide-react';
-import { useAudio } from '../hooks/useAudio';
 import { useToast } from '../context/ToastContext';
 
 export const CommandPalette: React.FC = () => {
@@ -22,7 +21,6 @@ export const CommandPalette: React.FC = () => {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
-  const { playHover, playClick } = useAudio();
   const { showToast } = useToast();
 
   // Toggle open/close
@@ -33,7 +31,6 @@ export const CommandPalette: React.FC = () => {
         setIsOpen(prev => !prev);
         setQuery('');
         setSelectedIndex(0);
-        playClick();
       }
       if (e.key === 'Escape') {
         setIsOpen(false);
@@ -41,7 +38,7 @@ export const CommandPalette: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [playClick]);
+  }, []);
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle('dark');
@@ -51,61 +48,61 @@ export const CommandPalette: React.FC = () => {
   };
 
   const actions = useMemo(() => [
-    { 
-      id: 'home', 
-      label: 'Home', 
+    {
+      id: 'home',
+      label: 'Home',
       category: 'Navigation',
-      icon: Home, 
-      action: () => { navigate('/'); setIsOpen(false); } 
+      icon: Home,
+      action: () => { navigate('/'); setIsOpen(false); }
     },
-    { 
-      id: 'about', 
-      label: 'About Me', 
+    {
+      id: 'about',
+      label: 'About Me',
       category: 'Navigation',
-      icon: User, 
-      action: () => { navigate('/about'); setIsOpen(false); } 
+      icon: User,
+      action: () => { navigate('/about'); setIsOpen(false); }
     },
-    { 
-      id: 'projects', 
-      label: 'Projects', 
+    {
+      id: 'projects',
+      label: 'Projects',
       category: 'Navigation',
-      icon: Briefcase, 
-      action: () => { navigate('/projects'); setIsOpen(false); } 
+      icon: Briefcase,
+      action: () => { navigate('/projects'); setIsOpen(false); }
     },
-    { 
-      id: 'contact', 
-      label: 'Contact', 
+    {
+      id: 'contact',
+      label: 'Contact',
       category: 'Navigation',
-      icon: Mail, 
-      action: () => { navigate('/contact'); setIsOpen(false); } 
+      icon: Mail,
+      action: () => { navigate('/contact'); setIsOpen(false); }
     },
-    { 
-      id: 'resume', 
-      label: 'Download Resume', 
+    {
+      id: 'resume',
+      label: 'Download Resume',
       category: 'Quick Actions',
-      icon: FileText, 
+      icon: FileText,
       action: () => {
         showToast("Resume download started...", "info");
         setIsOpen(false);
-      } 
+      }
     },
-    { 
-      id: 'copy-email', 
-      label: 'Copy Email Address', 
+    {
+      id: 'copy-email',
+      label: 'Copy Email Address',
       category: 'Quick Actions',
-      icon: Copy, 
+      icon: Copy,
       action: () => {
         navigator.clipboard.writeText('anuruprkrishnan@gmail.com');
         showToast("Email copied to clipboard!", "success");
         setIsOpen(false);
-      } 
+      }
     },
-    { 
-      id: 'theme', 
-      label: 'Toggle Dark Mode', 
+    {
+      id: 'theme',
+      label: 'Toggle Dark Mode',
       category: 'System',
-      icon: Moon, 
-      action: toggleTheme 
+      icon: Moon,
+      action: toggleTheme
     },
     {
       id: 'github-profile',
@@ -119,7 +116,7 @@ export const CommandPalette: React.FC = () => {
     }
   ], [navigate, showToast]);
 
-  const filteredActions = actions.filter(action => 
+  const filteredActions = actions.filter(action =>
     action.label.toLowerCase().includes(query.toLowerCase()) ||
     action.category.toLowerCase().includes(query.toLowerCase())
   );
@@ -132,23 +129,20 @@ export const CommandPalette: React.FC = () => {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
         setSelectedIndex(prev => (prev + 1) % filteredActions.length);
-        playHover();
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         setSelectedIndex(prev => (prev - 1 + filteredActions.length) % filteredActions.length);
-        playHover();
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (filteredActions[selectedIndex]) {
           filteredActions[selectedIndex].action();
-          playClick();
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, filteredActions, selectedIndex, playHover, playClick]);
+  }, [isOpen, filteredActions, selectedIndex]);
 
   return (
     <AnimatePresence>
@@ -161,7 +155,7 @@ export const CommandPalette: React.FC = () => {
             onClick={() => setIsOpen(false)}
             className="absolute inset-0 bg-neo-black/60 backdrop-blur-md"
           />
-          
+
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -214,8 +208,8 @@ export const CommandPalette: React.FC = () => {
                                 onMouseEnter={() => setSelectedIndex(globalIndex)}
                                 className={`
                                   w-full flex items-center p-3 text-left font-bold transition-all
-                                  ${isSelected 
-                                    ? 'bg-neo-blue dark:bg-neo-accent text-white dark:text-white translate-x-1 translate-y-[-2px] shadow-neo-sm border-2 border-neo-black dark:border-neo-amoled-border' 
+                                  ${isSelected
+                                    ? 'bg-neo-blue dark:bg-neo-accent text-white dark:text-white translate-x-1 translate-y-[-2px] shadow-neo-sm border-2 border-neo-black dark:border-neo-amoled-border'
                                     : 'border-2 border-transparent text-neo-black dark:text-neo-amoled-text hover:bg-gray-100 dark:hover:bg-neo-amoled-bg'}
                                 `}
                               >
