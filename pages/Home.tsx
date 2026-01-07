@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -8,18 +8,6 @@ import { Marquee } from '../components/Marquee';
 import { GlitchText } from '../components/ui/GlitchText';
 
 const Home: React.FC = () => {
-  const [text, setText] = useState('');
-  const fullText = "Engineering Scalable Solutions";
-
-  useEffect(() => {
-    let index = 0;
-    const interval = setInterval(() => {
-      setText(fullText.slice(0, index + 1));
-      index++;
-      if (index > fullText.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -54,15 +42,8 @@ const Home: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="w-full md:w-1/2"
         >
-          <span className="inline-block px-4 py-2 bg-neo-green dark:bg-neo-amoled-surface border-2 border-neo-black dark:border-neo-amoled-border font-bold uppercase mb-6 shadow-neo-sm dark:shadow-neo-sm-amoled dark:text-neo-amoled-text">
-            Full Stack Engineer
-          </span>
-
-          <h1 className="text-[clamp(2.5rem,8vw,5.5rem)] font-black uppercase leading-tight mb-8 dark:text-neo-amoled-text w-full text-center md:text-left">
-            I'm <GlitchText text="Anurup" as="span" className="text-neo-blue" />.<br />
-            <span className="bg-neo-yellow dark:bg-neo-amoled-surface px-2 inline-block transform -rotate-2 border-x-4 border-neo-black dark:border-neo-amoled-border min-h-[1.2em] max-w-full">
-              {text}<span className="animate-pulse">|</span>
-            </span>
+          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black uppercase leading-tight mb-8 dark:text-neo-amoled-text w-full text-center md:text-left">
+            Hi I'm <br className="md:hidden" /> <GlitchText text="Anurup R Krishnan" as="span" className="text-neo-blue block md:inline" />.
           </h1>
 
           <p className="text-xl md:text-2xl font-medium max-w-2xl mb-10 leading-relaxed border-l-8 border-neo-pink pl-6 dark:text-neo-amoled-muted">

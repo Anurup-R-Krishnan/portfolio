@@ -234,7 +234,7 @@ export const CommandPalette: React.FC = () => {
                 <span><span className="text-neo-black dark:text-zinc-500">Esc</span> close</span>
               </div>
               <div className="flex items-center gap-1">
-                <span>AMOLED by Anurup</span>
+                <span>AMOLED by Anurup R Krishnan</span>
                 <div className="w-2 h-2 rounded-full bg-neo-pink"></div>
               </div>
             </div>

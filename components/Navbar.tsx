@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
     }
     return false;
   });
-  
+
   const location = useLocation();
 
   useEffect(() => {
@@ -40,13 +40,13 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-neo-amoled-bg border-b-4 border-neo-black dark:border-neo-amoled-border h-20 transition-all">
       <div className="container mx-auto px-4 h-full flex items-center justify-between">
-        
+
         {/* Logo */}
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="text-3xl font-bold tracking-tighter hover:text-neo-pink transition-colors uppercase relative z-10 dark:text-neo-amoled-text"
         >
-          Anurup<span className="text-neo-blue">.</span>
+          ARK.<span className="text-neo-blue">.</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -88,40 +88,70 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="flex gap-4 md:hidden">
-            <button
+          <button
             onClick={toggleDarkMode}
             className="p-2 border-2 border-neo-black dark:border-neo-amoled-border shadow-neo-sm dark:shadow-neo-sm-amoled hover:shadow-none transition-all bg-neo-pink dark:bg-neo-amoled-surface text-black dark:text-neo-amoled-text"
-            >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button 
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 border-2 border-neo-black dark:border-neo-amoled-border shadow-neo-sm dark:shadow-neo-sm-amoled hover:shadow-none transition-all bg-neo-yellow dark:bg-neo-amoled-surface text-black dark:text-neo-amoled-text"
-            >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 border-2 border-neo-black dark:border-neo-amoled-border shadow-neo-sm dark:shadow-neo-sm-amoled hover:shadow-none transition-all bg-neo-yellow dark:bg-neo-amoled-surface text-black dark:text-neo-amoled-text"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="absolute top-20 left-0 w-full bg-white dark:bg-neo-amoled-bg border-b-4 border-neo-black dark:border-neo-amoled-border p-4 flex flex-col space-y-4 md:hidden shadow-neo-lg dark:shadow-neo-lg-amoled">
+      <motion.div
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+        className={`fixed inset-0 z-40 bg-white dark:bg-neo-amoled-bg md:hidden ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        variants={{
+          open: { opacity: 1 },
+          closed: { opacity: 0 }
+        }}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
           {NAV_ITEMS.map((item) => (
-            <Link
+            <motion.div
               key={item.path}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className={`
-                text-xl font-bold uppercase text-center py-3 border-2 border-neo-black dark:border-neo-amoled-border shadow-neo-sm dark:shadow-neo-sm-amoled
-                active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all
-                ${location.pathname === item.path ? 'bg-neo-black text-white dark:bg-neo-accent dark:text-white' : 'bg-neo-white dark:bg-neo-amoled-surface dark:text-neo-amoled-text hover:bg-neo-blue dark:hover:bg-neo-blue'}
-              `}
+              variants={{
+                open: { y: 0, opacity: 1 },
+                closed: { y: 20, opacity: 0 }
+              }}
             >
-              {item.label}
-            </Link>
+              <Link
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className={`
+                  text-4xl font-black uppercase tracking-tight
+                  ${location.pathname === item.path ? 'text-neo-pink dark:text-neo-accent' : 'text-neo-black dark:text-neo-amoled-text'}
+                `}
+              >
+                {item.label}
+              </Link>
+            </motion.div>
           ))}
+          <div className="mt-8 flex gap-4">
+            <a
+              href="https://github.com/anuruprk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 border-4 border-neo-black dark:border-neo-amoled-border bg-neo-green dark:bg-neo-amoled-surface shadow-neo"
+            >
+              Github
+            </a>
+            <a
+              href="/resume.pdf"
+              className="p-3 border-4 border-neo-black dark:border-neo-amoled-border bg-neo-blue dark:bg-neo-amoled-surface shadow-neo"
+            >
+              Resume
+            </a>
+          </div>
         </div>
-      )}
+      </motion.div>
     </nav>
   );
 };

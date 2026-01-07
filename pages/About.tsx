@@ -46,26 +46,7 @@ const getSkillIcon = (skillName: string) => {
 const About: React.FC = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
-  const [codeText, setCodeText] = useState('');
   const { showToast } = useToast();
-
-  const finalCode = `const developer = {
-  name: "Anurup",
-  role: "Full Stack Engineer",
-  focus: ["Cloud", "GenAI"],
-  coffee: true,
-  status: "Building scale"
-};`;
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setCodeText(finalCode.substring(0, i));
-      i++;
-      if (i > finalCode.length) clearInterval(interval);
-    }, 40);
-    return () => clearInterval(interval);
-  }, [finalCode]);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -132,23 +113,7 @@ const About: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Code Decoration Block */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 bg-neo-black p-4 border-4 border-gray-500 shadow-neo min-h-[160px]"
-            >
-              <div className="flex gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div className="font-mono text-sm text-neo-green whitespace-pre font-bold leading-relaxed overflow-hidden">
-                {codeText}
-                <span className="animate-pulse inline-block w-2 h-4 bg-neo-green align-middle ml-1"></span>
-              </div>
-            </motion.div>
+
           </div>
 
           <div className="lg:col-span-2">

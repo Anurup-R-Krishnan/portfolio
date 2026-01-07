@@ -107,7 +107,6 @@ if (isFirebaseConfigured) {
 
 export const getProjects = async (): Promise<Project[]> => {
   if (!isFirebaseConfigured) {
-    await new Promise(resolve => setTimeout(resolve, 800));
     return MOCK_PROJECTS;
   }
   try {
@@ -121,7 +120,6 @@ export const getProjects = async (): Promise<Project[]> => {
 
 export const getSkills = async (): Promise<Skill[]> => {
   if (!isFirebaseConfigured) {
-    await new Promise(resolve => setTimeout(resolve, 500));
     return MOCK_SKILLS;
   }
   try {
@@ -170,7 +168,6 @@ export const submitContactForm = async (data: Omit<ContactMessage, 'createdAt'>)
   }
 
   // 3. Fallback for testing/unconfigured state
-  await new Promise(resolve => setTimeout(resolve, 1500));
   console.warn("Contact form submitted (MOCK/FIREBASE ONLY). To enable real emails, configure EmailJS environment variables.");
   console.log("Data received:", data);
   return true;
