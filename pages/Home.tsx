@@ -73,7 +73,7 @@ const Home: React.FC = () => {
                 src="/profile.jpg"
                 alt="Anurup R Krishnan"
                 loading="lazy"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
+                className="w-full h-full object-cover transition-all duration-500"
               />
             </div>
           </div>
