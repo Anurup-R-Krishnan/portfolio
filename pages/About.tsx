@@ -46,7 +46,26 @@ const getSkillIcon = (skillName: string) => {
 const About: React.FC = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
+  const [codeText, setCodeText] = useState('');
   const { showToast } = useToast();
+
+  const finalCode = `const developer = {
+  name: "Anurup R Krishnan",
+  role: "Full Stack Engineer",
+  focus: ["Cloud", "GenAI"],
+  coffee: true,
+  status: "Building scale"
+};`;
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setCodeText(finalCode.substring(0, i));
+      i++;
+      if (i > finalCode.length) clearInterval(interval);
+    }, 40);
+    return () => clearInterval(interval);
+  }, [finalCode]);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -96,24 +115,23 @@ const About: React.FC = () => {
         {/* HERO PROFILE SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
           <div className="lg:col-span-1">
+            {/* Code Decoration Block */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-neo-black p-4 border-4 border-gray-500 shadow-neo min-h-[160px]"
             >
-              <div className="absolute inset-0 bg-neo-black translate-x-4 translate-y-4"></div>
-              <div className="relative border-4 border-neo-black bg-neo-yellow p-1">
-                <img
-                  src="https://picsum.photos/600/800?grayscale"
-                  alt="Anurup R Krishnan"
-                  loading="lazy"
-                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500"
-                />
+              <div className="flex gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="font-mono text-sm text-neo-green whitespace-pre font-bold leading-relaxed overflow-hidden">
+                {codeText}
+                <span className="animate-pulse inline-block w-2 h-4 bg-neo-green align-middle ml-1"></span>
               </div>
             </motion.div>
-
-
           </div>
 
           <div className="lg:col-span-2">

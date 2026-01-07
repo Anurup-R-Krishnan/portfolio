@@ -31,7 +31,7 @@ const Home: React.FC = () => {
         <motion.div
           animate={{ rotate: 180, y: [0, -40, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/3 right-1/4 w-0 h-0 border-l-[30px] border-l-transparent border-r-[30px] border-r-transparent border-b-[50px] border-b-neo-blue dark:border-b-neo-amoled-surface"
+          className="absolute top-1/3 right-4 md:right-1/4 w-0 h-0 border-l-[30px] border-l-transparent border-r-[30px] border-r-transparent border-b-[50px] border-b-neo-blue dark:border-b-neo-amoled-surface"
         />
       </div>
 
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
             <div className="absolute inset-0 bg-neo-black dark:bg-neo-amoled-border translate-x-4 translate-y-4"></div>
             <div className="relative border-4 border-neo-black dark:border-neo-amoled-border bg-neo-orange dark:bg-neo-amoled-surface p-1 w-full h-full overflow-hidden">
               <img
-                src="https://picsum.photos/600/600?grayscale"
+                src=""
                 alt="Anurup R Krishnan"
                 loading="lazy"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"

@@ -52,22 +52,21 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   render() {
-    // Accessing state which is inherited from React.Component
     if (this.state.hasError) {
       return (
         <div className="min-h-[50vh] flex flex-col items-center justify-center text-center p-8">
-           <h2 className="text-2xl font-bold mb-4 dark:text-white">Something went wrong.</h2>
-           <button 
-             onClick={() => window.location.reload()}
-             className="px-6 py-2 bg-neo-yellow border-4 border-neo-black font-bold uppercase shadow-neo hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
-           >
-             Reload Page
-           </button>
+          <h2 className="text-2xl font-bold mb-4 dark:text-white">Something went wrong.</h2>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-neo-yellow border-4 border-neo-black font-bold uppercase shadow-neo hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
+          >
+            Reload Page
+          </button>
         </div>
       );
     }
 
-    // Accessing props which is inherited from React.Component
+    // @ts-ignore
     return this.props.children;
   }
 }
@@ -88,7 +87,7 @@ const GlobalLogic = () => {
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "Come back! 💔";
+        document.title = "Anurup R Krishnan | Portfolio";
       } else {
         document.title = "Anurup R Krishnan | Portfolio";
       }
@@ -105,7 +104,7 @@ const GlobalLogic = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return;
 
-      switch(e.key.toLowerCase()) {
+      switch (e.key.toLowerCase()) {
         case 'h': navigate('/'); break;
         case 'a': navigate('/about'); break;
         case 'p': navigate('/projects'); break;
@@ -124,10 +123,10 @@ const GlobalLogic = () => {
       document.body.style.transform = "rotate(180deg)";
       document.body.style.transition = "transform 1s ease";
       showToast("🦄 GOD MODE ENABLED", "success");
-      
+
       setTimeout(() => {
-         document.body.style.transform = "";
-         showToast("Normalcy restored...", "info");
+        document.body.style.transform = "";
+        showToast("Normalcy restored...", "info");
       }, 5000);
     }
   }, [konamiTriggered, showToast]);
@@ -144,6 +143,7 @@ const AnimatedRoutes: React.FC = () => {
 
   return (
     <AnimatePresence mode="wait">
+      {/* @ts-ignore - Routes supports key for Framer Motion, but types don't reflect it */}
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={
           <TransitionLayout>

@@ -6,12 +6,12 @@ import { Project, Skill, ContactMessage } from '../types';
 const MOCK_PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'Notivos AI',
-    description: 'Smart desktop note-taking app with AI-powered summarization and search.',
-    longDescription: 'A cross-platform desktop application built with Electron.js that integrates Google Gemini API for real-time text summarization, semantic search, and AI-powered note enhancement. Features local SQLite caching for offline capability and text-to-speech support.',
-    imageUrl: 'https://picsum.photos/800/600?random=1',
-    tags: ['Electron', 'JavaScript', 'Gemini API', 'SQLite'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/Notivos-AI',
+    title: 'Sanctuary',
+    description: 'Modern EPUB reader with cloud synchronization.',
+    longDescription: 'A modern, feature-rich EPUB reader built with React and Supabase. Features include cloud synchronization of reading progress, bookmarks, and highlights, along with a customizable reading experience.',
+    imageUrl: 'https://picsum.photos/800/600?random=11',
+    tags: ['React', 'Supabase', 'TypeScript', 'Tailwind'],
+    githubUrl: 'https://github.com/Anurup-R-Krishnan/Sanctuary',
     featured: true
   },
   {
@@ -22,7 +22,7 @@ const MOCK_PROJECTS: Project[] = [
     imageUrl: 'https://picsum.photos/800/600?random=2',
     tags: ['Java', 'Spring Boot', 'Maven', 'Security'],
     githubUrl: 'https://github.com/Anurup-R-Krishnan/SecureMed',
-    featured: true
+    featured: false
   },
   {
     id: '3',
@@ -32,7 +32,7 @@ const MOCK_PROJECTS: Project[] = [
     imageUrl: 'https://picsum.photos/800/600?random=3',
     tags: ['React', 'TypeScript', 'Productivity', 'Tailwind'],
     githubUrl: 'https://github.com/Anurup-R-Krishnan/FocusBoard',
-    featured: true
+    featured: false
   },
   {
     id: '4',
@@ -107,13 +107,19 @@ if (isFirebaseConfigured) {
 
 export const getProjects = async (): Promise<Project[]> => {
   if (!isFirebaseConfigured) {
+    console.warn("Firebase not configured. Using MOCK data.");
     return MOCK_PROJECTS;
   }
   try {
     const q = query(collection(db, 'projects'));
     const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      console.warn("Firebase connected but found no projects. Returning empty list (or fallback).");
+      return MOCK_PROJECTS;
+    }
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Project));
   } catch (error) {
+    console.error("Failed to fetch projects from Firebase. Falling back to MOCK data.", error);
     return MOCK_PROJECTS;
   }
 };
