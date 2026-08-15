@@ -1,4 +1,18 @@
-# Anurup R Krishnan — portfolio
+<div align="center">
+
+# ✦ Anurup R Krishnan — Portfolio
+
+### A living index of engineering work, experiments, and systems
+
+[![React](https://img.shields.io/badge/React-18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](src/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](src/)
+[![Vite](https://img.shields.io/badge/Vite-frontend-646CFF?style=for-the-badge&logo=vite&logoColor=white)](vite.config.ts)
+[![GitHub data](https://img.shields.io/badge/data-verified%20GitHub%20repos-181717?style=for-the-badge&logo=github)](src/data/)
+[![Cloudflare](https://img.shields.io/badge/deploy-Cloudflare%20Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](wrangler.toml)
+
+<p><a href="#highlights">Highlights</a> · <a href="#run-locally">Run locally</a> · <a href="#deployment">Deployment</a></p>
+
+</div>
 
 The source for my personal portfolio: selected engineering work, project archive, technical skills, background, résumé, and contact page.
 
