@@ -116,7 +116,7 @@ const Contact: React.FC = () => {
                   anuruprkrishnan@gmail.com
                 </div>
                 <div className="bg-white p-4 border-4 border-neo-black shadow-neo-sm">
-                  Coimbatore, India
+                  Thiruvananthapuram, Kerala, India
                 </div>
               </div>
             </Card>

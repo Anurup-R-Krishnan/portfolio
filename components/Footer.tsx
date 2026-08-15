@@ -1,13 +1,12 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/anuruprk", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/anuruprk", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/anuruprk", label: "Twitter" },
+    { icon: Github, href: "https://github.com/Anurup-R-Krishnan", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/anurup-r-krishnan", label: "LinkedIn" },
     { icon: Mail, href: "mailto:anuruprkrishnan@gmail.com", label: "Email" },
   ];
 
@@ -65,9 +64,7 @@ export const Footer: React.FC = () => {
                 © {currentYear} • All Rights Reserved
               </p>
               <div className="mt-4 flex gap-4 text-[10px] font-black uppercase text-gray-500 underline decoration-2 underline-offset-4 hover:text-neo-black dark:hover:text-white">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Resume</a>
+                <a href="/resume.pdf" download="Anurup_Krishnan_Resume.pdf">Resume</a>
               </div>
             </div>
           </div>

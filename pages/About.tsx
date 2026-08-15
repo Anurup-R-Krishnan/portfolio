@@ -51,10 +51,10 @@ const About: React.FC = () => {
 
   const finalCode = `const developer = {
   name: "Anurup R Krishnan",
-  role: "Full Stack Engineer",
-  focus: ["Cloud", "GenAI"],
+  role: "Computer Science Engineer",
+  focus: ["Network Systems", "AI Engineering"],
   coffee: true,
-  status: "Building scale"
+  status: "Building secure systems"
 };`;
 
   useEffect(() => {
@@ -150,13 +150,13 @@ const About: React.FC = () => {
               className="prose prose-lg text-black max-w-none space-y-6"
             >
               <p className="text-xl font-bold">
-                I'm Anurup R Krishnan, a Computer Science student with a focus on Distributed Systems and High-Performance Applications.
+                I'm Anurup R Krishnan, a Computer Science and Engineering student focused on network systems, security, and applied AI engineering.
               </p>
               <p>
-                Currently pursuing my B.Tech at Amrita Vishwa Vidyapeetham, I specialize in architecting scalable solutions and exploring the intersections of cloud infrastructure and modern web technologies. I believe in software that is not only powerful but also aesthetically striking and user-centric.
+                I am pursuing my B.Tech at Amrita Vishwa Vidyapeetham. My projects span autonomous-agent controls, API compatibility tooling, trust-and-safety evaluation, healthcare systems, and network slicing.
               </p>
               <p>
-                My work often involves bridging the gap between low-level system performance and high-level abstract interfaces. I'm a lifelong learner, always eager to tackle complex technical challenges that push the boundaries of what's possible on the web.
+                I like turning security and reliability requirements into systems that can be tested and explained. That includes cryptographic mandates, concurrency controls, deterministic evaluation environments, audit trails, and reproducible deployment workflows.
               </p>
             </motion.div>
 
@@ -199,7 +199,7 @@ const About: React.FC = () => {
                 <span className="inline-block bg-neo-black text-white px-2 py-1 text-sm font-bold mb-2">May 2025 - June 2025</span>
                 <h3 className="text-2xl font-bold">Research Intern (CGSE)</h3>
                 <p className="font-bold text-gray-600 mb-2">Indian Space Research Organisation (ISRO)</p>
-                <p>Engineered optimal thresholding algorithms for telemetry signal processing, achieving significant noise reduction and performance gains.</p>
+                <p>Developed a PyTorch 1D CNN workflow that compares paired telemetry signals and predicts normalized anomaly thresholds with support for variable-length inputs.</p>
               </Card>
             </div>
 

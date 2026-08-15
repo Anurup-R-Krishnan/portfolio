@@ -136,7 +136,7 @@ export const Navbar: React.FC = () => {
           ))}
           <div className="mt-8 flex gap-4">
             <a
-              href="https://github.com/anuruprk"
+              href="https://github.com/Anurup-R-Krishnan"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 border-4 border-neo-black dark:border-neo-amoled-border bg-neo-green dark:bg-neo-amoled-surface shadow-neo"

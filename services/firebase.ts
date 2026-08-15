@@ -2,80 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, addDoc, query, orderBy, Timestamp } from 'firebase/firestore';
 import emailjs from '@emailjs/browser';
 import { Project, Skill, ContactMessage } from '../types';
-
-const MOCK_PROJECTS: Project[] = [
-  {
-    id: '1',
-    title: 'Sanctuary',
-    description: 'Modern EPUB reader with cloud synchronization.',
-    longDescription: 'A modern, feature-rich EPUB reader built with React and Supabase. Features include cloud synchronization of reading progress, bookmarks, and highlights, along with a customizable reading experience.',
-    imageUrl: 'https://picsum.photos/800/600?random=11',
-    tags: ['React', 'Supabase', 'TypeScript', 'Tailwind'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/Sanctuary',
-    featured: true
-  },
-  {
-    id: '2',
-    title: 'SecureMed',
-    description: 'Secure healthcare data management API built with Spring Boot.',
-    longDescription: 'A robust backend system for managing sensitive medical records securely. Implements role-based access control (RBAC), data encryption, and HIPAA-compliant architecture using Java Spring Boot and Maven.',
-    imageUrl: 'https://picsum.photos/800/600?random=2',
-    tags: ['Java', 'Spring Boot', 'Maven', 'Security'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/SecureMed',
-    featured: false
-  },
-  {
-    id: '3',
-    title: 'FocusBoard',
-    description: 'Productivity and task management dashboard for focused work sessions.',
-    longDescription: 'A comprehensive task agility board designed to enhance productivity. Features include drag-and-drop task management, pomodoro timer integration, and distraction-free modes.',
-    imageUrl: 'https://picsum.photos/800/600?random=3',
-    tags: ['React', 'TypeScript', 'Productivity', 'Tailwind'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/FocusBoard',
-    featured: false
-  },
-  {
-    id: '4',
-    title: 'Link-Us',
-    description: 'Python-based social networking platform for connection.',
-    longDescription: 'A comprehensive social networking system allowing users to connect, share posts, and interact through messaging. Includes friend recommendation algorithms and user profile management.',
-    imageUrl: 'https://picsum.photos/800/600?random=4',
-    tags: ['Python', 'Social Network', 'Backend'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/Link-Us',
-    featured: false
-  },
-  {
-    id: '5',
-    title: 'ARIMA Sales Forecasting',
-    description: 'Statistical sales prediction model using ARIMA algorithm.',
-    longDescription: 'Implementation of the AutoRegressive Integrated Moving Average (ARIMA) model to predict future sales trends based on historical dataset analysis. Useful for demand planning and inventory management.',
-    imageUrl: 'https://picsum.photos/800/600?random=5',
-    tags: ['Python', 'Data Science', 'ARIMA', 'Forecasting'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/ARIMA-Sales-Forecasting-',
-    featured: false
-  },
-  {
-    id: '6',
-    title: 'AutoRE',
-    description: 'Relationship Extraction system for unstructured text analysis.',
-    longDescription: 'A Natural Language Processing project focused on identifying and classifying relationships between entities in unstructured text data. Essential for knowledge graph construction.',
-    imageUrl: 'https://picsum.photos/800/600?random=6',
-    tags: ['Python', 'NLP', 'AI', 'Machine Learning'],
-    githubUrl: 'https://github.com/Anurup-R-Krishnan/AutoRE',
-    featured: false
-  }
-];
-
-const MOCK_SKILLS: Skill[] = [
-  { id: '1', name: 'C++', category: 'Backend' },
-  { id: '2', name: 'Python', category: 'Backend' },
-  { id: '4', name: 'TypeScript', category: 'Frontend' },
-  { id: '7', name: 'React.js', category: 'Frontend' },
-  { id: '11', name: 'Node.js', category: 'Backend' },
-  { id: '15', name: 'Docker', category: 'Tools' },
-  { id: '19', name: 'Git/GitHub', category: 'Tools' },
-  { id: '21', name: 'Figma', category: 'Design' },
-];
+import { PORTFOLIO_PROJECTS, PORTFOLIO_SKILLS } from '../data/portfolio';
 
 const getEnv = (key: string) => {
   try { return process.env[key]; } catch (e) { return undefined; }
@@ -107,33 +34,31 @@ if (isFirebaseConfigured) {
 
 export const getProjects = async (): Promise<Project[]> => {
   if (!isFirebaseConfigured) {
-    console.warn("Firebase not configured. Using MOCK data.");
-    return MOCK_PROJECTS;
+    return PORTFOLIO_PROJECTS;
   }
   try {
     const q = query(collection(db, 'projects'));
     const snapshot = await getDocs(q);
     if (snapshot.empty) {
-      console.warn("Firebase connected but found no projects. Returning empty list (or fallback).");
-      return MOCK_PROJECTS;
+      return PORTFOLIO_PROJECTS;
     }
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Project));
   } catch (error) {
-    console.error("Failed to fetch projects from Firebase. Falling back to MOCK data.", error);
-    return MOCK_PROJECTS;
+    console.error("Failed to fetch projects from Firebase. Falling back to verified portfolio data.", error);
+    return PORTFOLIO_PROJECTS;
   }
 };
 
 export const getSkills = async (): Promise<Skill[]> => {
   if (!isFirebaseConfigured) {
-    return MOCK_SKILLS;
+    return PORTFOLIO_SKILLS;
   }
   try {
     const q = query(collection(db, 'skills'));
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Skill));
   } catch (error) {
-    return MOCK_SKILLS;
+    return PORTFOLIO_SKILLS;
   }
 };
 

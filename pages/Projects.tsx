@@ -7,6 +7,7 @@ import { Project } from '../types';
 import { ProjectCard } from '../components/ProjectCard';
 import { Skeleton } from '../components/ui/Skeleton';
 import { Button } from '../components/ui/Button';
+import { ARCHIVE_PROJECTS } from '../data/portfolio';
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -39,14 +40,6 @@ const Projects: React.FC = () => {
   const featuredProject = projects.find(p => p.featured);
   const gridProjects = filteredProjects.filter(p => p.id !== featuredProject?.id);
 
-  // Archive projects
-  const archiveProjects = [
-    { year: '2023', title: 'Portfolio v1', builtWith: 'HTML/CSS', link: '#' },
-    { year: '2023', title: 'Weather App', builtWith: 'React API', link: '#' },
-    { year: '2022', title: 'Snake Game', builtWith: 'Python', link: '#' },
-    { year: '2022', title: 'Calculator', builtWith: 'JavaScript', link: '#' },
-  ];
-
   return (
     <>
       <Helmet>
@@ -64,7 +57,7 @@ const Projects: React.FC = () => {
              My <span className="text-neo-pink">Work</span>
           </h1>
           <p className="text-xl font-medium max-w-2xl mx-auto dark:text-neo-amoled-muted">
-             A collection of experiments, production apps, and sleepless nights.
+             Verified systems, developer tools, and applied AI projects from my GitHub.
           </p>
         </motion.div>
 
@@ -192,8 +185,8 @@ const Projects: React.FC = () => {
                      </tr>
                   </thead>
                   <tbody>
-                     {archiveProjects.map((proj, i) => (
-                        <tr key={i} className="border-b-2 border-neo-black dark:border-neo-amoled-border hover:bg-neo-yellow dark:hover:bg-neo-amoled-surfaceLight transition-colors group">
+                     {ARCHIVE_PROJECTS.map((proj) => (
+                        <tr key={proj.link} className="border-b-2 border-neo-black dark:border-neo-amoled-border hover:bg-neo-yellow dark:hover:bg-neo-amoled-surfaceLight transition-colors group">
                            <td className="p-4 border-r-2 border-neo-black dark:border-neo-amoled-border font-black text-neo-pink dark:text-neo-amoled-muted group-hover:text-black dark:group-hover:text-neo-pink">
                              {proj.year}
                            </td>
@@ -206,19 +199,12 @@ const Projects: React.FC = () => {
                                </span>
                            </td>
                            <td className="p-4">
-                              <a href={proj.link} className="flex items-center text-neo-black dark:text-neo-amoled-muted hover:text-neo-pink dark:hover:text-neo-pink transition-colors">
+                              <a href={proj.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${proj.title} on GitHub`} className="flex items-center text-neo-black dark:text-neo-amoled-muted hover:text-neo-pink dark:hover:text-neo-pink transition-colors">
                                  <ExternalLink size={20} className="stroke-[3px]" />
                               </a>
                            </td>
                         </tr>
                      ))}
-                     {/* Placeholder Row */}
-                     <tr className="border-b-2 border-neo-black dark:border-neo-amoled-border bg-gray-50 dark:bg-transparent text-gray-400 italic">
-                        <td className="p-4 border-r-2 border-neo-black dark:border-neo-amoled-border">2021</td>
-                        <td className="p-4 border-r-2 border-neo-black dark:border-neo-amoled-border">More coming soon...</td>
-                        <td className="p-4 border-r-2 border-neo-black dark:border-neo-amoled-border hidden md:table-cell">-</td>
-                        <td className="p-4">-</td>
-                     </tr>
                   </tbody>
                </table>
             </div>

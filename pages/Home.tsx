@@ -6,14 +6,16 @@ import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Marquee } from '../components/Marquee';
 import { GlitchText } from '../components/ui/GlitchText';
+import { PORTFOLIO_PROJECTS } from '../data/portfolio';
 
 const Home: React.FC = () => {
+  const selectedProjects = PORTFOLIO_PROJECTS.slice(0, 2);
 
   return (
     <>
       <Helmet>
         <title>Home | Anurup R Krishnan</title>
-        <meta name="description" content="Portfolio of Anurup R Krishnan - Full Stack Engineer" />
+        <meta name="description" content="Portfolio of Anurup R Krishnan - distributed systems, security, and applied AI engineering." />
       </Helmet>
 
       {/* Decorative Floating Shapes */}
@@ -47,7 +49,7 @@ const Home: React.FC = () => {
           </h1>
 
           <p className="text-xl md:text-2xl font-medium max-w-2xl mb-10 leading-relaxed border-l-8 border-neo-pink pl-6 dark:text-neo-amoled-muted">
-            Specializing in distributed systems, high-performance cloud infrastructure, and AI-powered applications.
+            I build secure distributed infrastructure, developer tools, and applied agent systems.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start w-full">
@@ -82,7 +84,7 @@ const Home: React.FC = () => {
 
       {/* Marquee Section */}
       <div className="-mx-4 md:-mx-8 mb-20 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-        <Marquee items={["React", "Node.js", "System Design", "Cloud Native", "AI/ML"]} />
+        <Marquee items={["Python", "TypeScript", "Network Systems", "Security", "Agent Evaluation"]} />
       </div>
 
       {/* Featured Preview Section */}
@@ -95,28 +97,20 @@ const Home: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card color="white" hoverEffect tilt>
-            <div className="aspect-video bg-gray-200 dark:bg-neo-amoled-bg border-2 border-neo-black dark:border-neo-amoled-border mb-4 overflow-hidden">
-              <img src="https://picsum.photos/800/600?random=10" loading="lazy" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100" alt="Notivos AI" />
-            </div>
-            <h3 className="text-2xl font-bold uppercase dark:text-neo-amoled-text">Notivos AI</h3>
-            <p className="mt-2 text-gray-700 dark:text-neo-amoled-muted">Desktop suite with Gemini API for real-time summarization.</p>
-            <div className="mt-4 flex gap-2">
-              <span className="text-xs font-bold border-2 border-neo-black dark:border-neo-amoled-border px-2 py-0.5 bg-white dark:bg-neo-amoled-surfaceLight dark:text-neo-amoled-muted">Electron</span>
-              <span className="text-xs font-bold border-2 border-neo-black dark:border-neo-amoled-border px-2 py-0.5 bg-white dark:bg-neo-amoled-surfaceLight dark:text-neo-amoled-muted">Node.js</span>
-            </div>
-          </Card>
-          <Card color="white" hoverEffect tilt>
-            <div className="aspect-video bg-gray-200 dark:bg-neo-amoled-bg border-2 border-neo-black dark:border-neo-amoled-border mb-4 overflow-hidden">
-              <img src="https://picsum.photos/800/600?random=11" loading="lazy" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100" alt="Sanctuary" />
-            </div>
-            <h3 className="text-2xl font-bold uppercase dark:text-neo-amoled-text">Sanctuary</h3>
-            <p className="mt-2 text-black dark:text-neo-amoled-muted">Modern EPUB reader with cloud synchronization.</p>
-            <div className="mt-4 flex gap-2">
-              <span className="text-xs font-bold border-2 border-neo-black dark:border-neo-amoled-border px-2 py-0.5 bg-white dark:bg-neo-amoled-surfaceLight dark:text-neo-amoled-muted">React</span>
-              <span className="text-xs font-bold border-2 border-neo-black dark:border-neo-amoled-border px-2 py-0.5 bg-white dark:bg-neo-amoled-surfaceLight dark:text-neo-amoled-muted">Supabase</span>
-            </div>
-          </Card>
+          {selectedProjects.map((project) => (
+            <Card key={project.id} color="white" hoverEffect tilt>
+              <div className="aspect-video bg-gray-200 dark:bg-neo-amoled-bg border-2 border-neo-black dark:border-neo-amoled-border mb-4 overflow-hidden">
+                <img src={project.imageUrl} loading="lazy" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100" alt={`${project.title} project preview`} />
+              </div>
+              <h3 className="text-2xl font-bold uppercase dark:text-neo-amoled-text">{project.title}</h3>
+              <p className="mt-2 text-gray-700 dark:text-neo-amoled-muted">{project.description}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {project.tags.slice(0, 2).map((tag) => (
+                  <span key={tag} className="text-xs font-bold border-2 border-neo-black dark:border-neo-amoled-border px-2 py-0.5 bg-white dark:bg-neo-amoled-surfaceLight dark:text-neo-amoled-muted">{tag}</span>
+                ))}
+              </div>
+            </Card>
+          ))}
         </div>
 
         <div className="mt-8 md:hidden">

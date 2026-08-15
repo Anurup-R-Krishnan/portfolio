@@ -110,7 +110,7 @@ export const CommandPalette: React.FC = () => {
       category: 'Social',
       icon: ExternalLink,
       action: () => {
-        window.open('https://github.com/anuruprk', '_blank');
+        window.open('https://github.com/Anurup-R-Krishnan', '_blank');
         setIsOpen(false);
       }
     }
